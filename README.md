@@ -4,10 +4,6 @@
 
 **NOTE:** This is the environment used to build the Vagrant box. If you are looking for a Node.js environment, just use the box: [server4001/nodejs-mysql-centos](https://app.vagrantup.com/server4001/boxes/nodejs-mysql-centos).
 
-### Versions
-
-* TODO : THIS.
-
 ### Instructions
 
 * `vagrant up`
