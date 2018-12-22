@@ -1,0 +1,59 @@
+---
+- name: Ensure MySQL log directory exists
+  file:
+    path: "{{ mysql_log_directory }}"
+    state: directory
+    mode: 0775
+    owner: "{{ mysql_user }}"
+    group: "{{ mysql_group }}"
+
+- name: Initialize database
+  command: mysqld --initialize-insecure
+  args:
+    chdir: "{{ mysql_data_directory }}"
+    creates: "{{ mysql_data_directory }}/mysql"
+
+- name: Set ownership of MySQL files
+  file:
+    path: "{{ mysql_data_directory }}"
+    owner: "{{ mysql_user }}"
+    group: "{{ mysql_group }}"
+    recurse: yes
+
+- name: Ensure the MySQL binary log directory exists
+  file:
+    path: "{{ mysql_binlog_directory }}"
+    state: directory
+    mode: 0777
+    owner: "{{ mysql_user }}"
+    group: "{{ mysql_group }}"
+
+- name: Update MySQL configuration file
+  template:
+    src: my.cnf.j2
+    dest: /etc/my.cnf
+    owner: "{{ mysql_user }}"
+    group: "{{ mysql_group }}"
+    mode: 0644
+  notify: Restart MySQL
+
+- name: Add mysql client configs for vagrant and root users
+  template:
+    src: mysql-client.cnf.j2
+    dest: "{{ item.base_path }}/.my.cnf"
+    owner: "{{ item.owner }}"
+    group: "{{ item.group }}"
+    mode: 0600
+  with_items:
+    - base_path: /home/vagrant
+      owner: vagrant
+      group: vagrant
+    - base_path: /root
+      owner: root
+      group: root
+
+- name: Start MySQL service
+  service:
+    name: mysqld
+    state: started
+    enabled: yes

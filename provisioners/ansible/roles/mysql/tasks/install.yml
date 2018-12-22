@@ -1,0 +1,5 @@
+---
+- name: Install MySQL server and client
+  yum:
+    name: "mysql-community-server-{{ mysql_version }}"
+    state: present

@@ -1,0 +1,10 @@
+---
+- name: Install Node.js repo from RPM file
+  yum:
+    name: "{{ nodejs_tmp_rpm_path }}"
+    state: present
+
+- name: Remove Node.js repo RPM file
+  file:
+    path: "{{ nodejs_tmp_rpm_path }}"
+    state: absent

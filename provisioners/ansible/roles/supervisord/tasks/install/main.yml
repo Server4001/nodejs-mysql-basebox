@@ -1,0 +1,14 @@
+---
+- name: Check if Supervisor is already installed
+  stat:
+    path: "{{ supervisord_bin_file }}"
+  register: supervisord_installed
+
+- import_tasks: centos_install.yml
+  when: supervisord_installed.stat.exists == False
+
+- name: Install Supervisor via PIP
+  pip:
+    name: supervisor
+    version: "{{ supervisord_version }}"
+    state: present

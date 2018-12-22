@@ -1,0 +1,46 @@
+# {{ ansible_managed }}
+[mysql]
+
+# CLIENT #
+port                            = {{ mysql_port }}
+socket                          = {{ mysql_socket }}
+
+[mysqld]
+#
+# Remove leading # and set to the amount of RAM for the most important data
+# cache in MySQL. Start at 70% of total RAM for dedicated server, else 10%.
+# innodb_buffer_pool_size = 128M
+#
+# Remove leading # to turn on a very important data integrity option: logging
+# changes to the binary log between backups.
+# log_bin
+#
+# Remove leading # to set options mainly useful for reporting servers.
+# The server defaults are faster for transactions and fast SELECTs.
+# Adjust sizes as needed, experiment to find the optimal values.
+# join_buffer_size = 128M
+# sort_buffer_size = 2M
+# read_rnd_buffer_size = 2M
+
+# GENERAL #
+server-id                       = {{ mysql_server_id }}
+socket                          = {{ mysql_socket }}
+pid-file                        = /var/run/mysqld/mysqld.pid
+datadir                         = {{ mysql_data_directory }}
+
+# SAFETY #
+symbolic-links                  = 0
+
+# LOGGING #
+log-error                      = {{ mysql_log_directory }}/mysql-error.log
+slow-query-log                 = 1
+slow-query-log-file            = {{ mysql_log_directory }}/mysql-slow.log
+
+# SQL MODE #
+sql-mode = "{{ mysql_sql_mode }}"
+
+# BINARY LOGS #
+log_bin={{ mysql_binlog_files }}
+expire_logs_days=5
+binlog-format=STATEMENT
+max-binlog-size=20971520

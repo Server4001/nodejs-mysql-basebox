@@ -1,0 +1,5 @@
+---
+- name: Check if Node.js is already installed
+  stat:
+    path: "{{ nodejs_binary }}"
+  register: nodejs_installed

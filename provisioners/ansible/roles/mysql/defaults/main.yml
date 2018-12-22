@@ -1,0 +1,14 @@
+---
+mysql_repo_url: 'http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm'
+mysql_version: 5.7.13
+mysql_user: mysql
+mysql_group: mysql
+mysql_data_directory: /var/lib/mysql
+mysql_binlog_directory: "/var/log/mysql-binlog-files"
+mysql_binlog_files: "{{ mysql_binlog_directory }}/mysql-bin"
+mysql_port: 3306
+mysql_socket: /var/lib/mysql/mysql.sock
+mysql_server_id: 1
+mysql_root_password: password
+mysql_log_directory: /var/log/mysql
+mysql_sql_mode: 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'

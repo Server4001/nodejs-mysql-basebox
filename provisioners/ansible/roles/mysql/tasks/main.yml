@@ -1,0 +1,16 @@
+---
+- name: Check if MySQL server is already installed
+  stat:
+    path: /usr/bin/mysqld_safe
+  register: mysql_installed
+
+- import_tasks: add_mysql_repo.yml
+  when: mysql_installed.stat.exists == False
+
+- import_tasks: install.yml
+  when: mysql_installed.stat.exists == False
+
+- import_tasks: configure.yml
+
+- import_tasks: mysql_secure_installation.yml
+  when: mysql_installed.stat.exists == False

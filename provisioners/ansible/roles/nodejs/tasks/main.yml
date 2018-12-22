@@ -1,0 +1,5 @@
+---
+- import_tasks: check_if_nodejs_exists.yml
+
+- import_tasks: includes.yml
+  when: nodejs_installed.stat.exists == False

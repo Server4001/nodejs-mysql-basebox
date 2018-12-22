@@ -1,0 +1,31 @@
+---
+- name: Install man pages before anything else
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+  - man
+  - man-pages
+
+- name: Install common packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+  - screen
+  - tree
+  - colordiff
+  - bash-completion
+  - yum-utils
+  - libselinux-python
+  - MySQL-python
+  - python-pip
+  - python-tools
+  - telnet
+  - nc
+  - socat
+  - unzip
+  - lsof
+  - sysstat
+  - git
+  - vim-enhanced

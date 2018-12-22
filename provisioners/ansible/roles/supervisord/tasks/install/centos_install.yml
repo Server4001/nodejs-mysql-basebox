@@ -1,0 +1,12 @@
+---
+# For CentOS we must install Supervisord via Yum, then immediately remove it, before installing it via PIP.
+# This is because CentOS only has an old version of Supervisord available via Yum, but Pip's newer version doesn't include the init.d scripts or default config files.
+- name: Install Supervisor via yum
+  yum:
+    name: supervisor
+    state: present
+
+- name: Remove Supervisor via yum
+  yum:
+    name: supervisor
+    state: absent

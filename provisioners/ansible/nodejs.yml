@@ -1,0 +1,21 @@
+---
+- name: "Provision Node.js etc."
+  hosts: default
+  become: yes
+  become_method: sudo
+  gather_facts: yes
+  force_handlers: true
+  any_errors_fatal: true
+
+  roles:
+  - common
+  - curl
+  - iptables
+  - nodejs
+  - nginx
+  - supervisord
+  - redis
+  - mysql
+
+  handlers:
+  - import_tasks: handlers/handlers.yml

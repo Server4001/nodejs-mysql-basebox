@@ -1,0 +1,4 @@
+---
+- import_tasks: install/main.yml
+
+- import_tasks: configure.yml

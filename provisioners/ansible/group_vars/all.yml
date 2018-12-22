@@ -1,0 +1,6 @@
+---
+# Nginx user
+nginx_user: 'nginx'
+nginx_group: 'nginx'
+
+application_log_dir: /var/log/www

@@ -1,0 +1,23 @@
+---
+supervisord_version: 3.3.1
+supervisord_logfile_maxbytes: 25MB
+supervisord_logfile_backups: 7
+supervisord_loglevel: info
+supervisord_socket_file: /var/tmp/supervisor.sock
+supervisord_configs_dir: /etc/supervisord/conf.d
+supervisord_config_file: /etc/supervisord.conf
+supervisord_init_d_file: /etc/init.d/supervisord
+supervisord_pid_file: /var/run/supervisord.pid
+supervisord_bin_file: /usr/bin/supervisord
+supervisord_log_dir: /var/log/supervisor
+supervisord_logfile: "{{ supervisord_log_dir }}/supervisord.log"
+supervisord_directories:
+  - path: "{{ supervisord_configs_dir }}"
+    owner: root
+    group: root
+  - path: "{{ supervisord_log_dir }}"
+    owner: "{{ nginx_user }}"
+    group: "{{ nginx_group }}"
+  - path: "{{ application_log_dir }}"
+    owner: "{{ nginx_user }}"
+    group: "{{ nginx_group }}"

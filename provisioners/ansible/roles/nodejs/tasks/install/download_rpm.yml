@@ -1,0 +1,15 @@
+---
+- name: Build the Node.js RPM URL string
+  set_fact:
+    nodejs_rpm_url: "http://rpm.nodesource.com/pub_10.x/el/{{ nodejs_distro_major_version }}/{{ ansible_architecture }}/nodesource-release-el{{ nodejs_distro_major_version }}-1.noarch.rpm"
+
+# For CentOS/Vagrant, we don't validate the website's certs and don't use HTTPS.
+# This is because Vagrant doesn't have a valid CA certificate installed. We would NEVER do this in production.
+- name: Download Node.js RPM to temporary file
+  get_url:
+    url: "{{ nodejs_rpm_url }}"
+    dest: "{{ nodejs_tmp_rpm_path }}"
+    owner: root
+    group: root
+    mode: 0644
+    validate_certs: False

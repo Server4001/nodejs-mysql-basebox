@@ -1,0 +1,8 @@
+---
+nginx_sendfile: "off"
+nginx_worker_processes: 1
+nginx_worker_connections: 1024
+nginx_server_config_dir: /etc/nginx/conf.d
+nginx_log_path: '/var/log/nginx'
+nginx_main_error_log: "{{ nginx_log_path }}/error.log"
+nginx_user_shell: '/bin/bash'

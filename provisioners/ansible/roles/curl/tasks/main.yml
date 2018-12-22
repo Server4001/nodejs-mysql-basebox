@@ -1,0 +1,13 @@
+---
+- name: Add the CityFan repo
+  copy:
+    src: city-fan.repo
+    dest: /etc/yum.repos.d/city-fan.repo
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Install the newest available version of cURL
+  yum:
+    name: curl
+    state: latest

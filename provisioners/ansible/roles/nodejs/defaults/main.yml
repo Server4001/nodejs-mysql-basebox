@@ -1,0 +1,5 @@
+---
+nodejs_binary: /usr/bin/node
+nodejs_tmp_rpm_path: /tmp/nodejs-nodesource.rpm
+nodejs_package_name: nodejs-10.14.2
+nodejs_distro_major_version: "{{ ansible_distribution_major_version }}"

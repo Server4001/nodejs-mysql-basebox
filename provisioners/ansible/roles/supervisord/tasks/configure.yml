@@ -1,0 +1,35 @@
+---
+- name: Add the Supervisor init.d script for running as a service
+  template:
+    src: supervisord.init.d.j2
+    dest: "{{ supervisord_init_d_file }}"
+    mode: 0755
+    owner: root
+    group: root
+  notify:
+    - Reload Supervisord
+
+- name: Configure Supervisor
+  template:
+    src: supervisord.conf.j2
+    dest: "{{ supervisord_config_file }}"
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    - Reload Supervisord
+
+- name: Ensure directories related to Supervisord and logging exist
+  file:
+    path: "{{ item.path }}"
+    state: directory
+    mode: 0755
+    owner: "{{ item.owner }}"
+    group: "{{ item.group }}"
+  with_items: "{{ supervisord_directories }}"
+
+- name: Start Supervisord
+  service:
+    name: supervisord
+    state: started
+    enabled: true

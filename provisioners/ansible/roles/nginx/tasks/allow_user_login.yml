@@ -1,0 +1,7 @@
+---
+# We do this to make it easy to run commands as nginx. NEVER DO THIS IN PRODUCTION.
+- name: Ensure nginx user login shell is bash
+  user:
+    name: "{{ nginx_user }}"
+    shell: "{{ nginx_user_shell }}"
+    state: present

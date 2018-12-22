@@ -1,0 +1,8 @@
+---
+- import_tasks: install/download_rpm.yml
+
+- import_tasks: install/add_nodejs_repo.yml
+
+- import_tasks: install/install_nodejs.yml
+
+- import_tasks: install/install_npm_packages.yml
