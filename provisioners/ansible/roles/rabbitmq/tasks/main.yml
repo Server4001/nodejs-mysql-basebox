@@ -1,0 +1,19 @@
+---
+- import_tasks: check_if_erlang_exists.yml
+
+- import_tasks: add_erlang_repo.yml
+  when: erlang_repo_installed.stat.exists == False
+
+- name: Install Erlang
+  yum:
+    name: "erlang-{{ erlang_version }}"
+    state: present
+
+- import_tasks: check_if_rabbitmq_exists.yml
+
+- import_tasks: install_rabbitmq.yml
+  when: rabbitmq_installed.stat.exists == False
+
+- import_tasks: configure_rabbitmq.yml
+
+- import_tasks: enable_rabbitmq_plugins.yml

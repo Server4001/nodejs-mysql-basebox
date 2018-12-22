@@ -23,3 +23,8 @@
   service:
     name: mongod
     state: restarted
+
+- name: Restart RabbitMQ
+  service:
+    name: rabbitmq-server
+    state: restarted

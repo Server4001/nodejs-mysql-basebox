@@ -1,0 +1,19 @@
+---
+- name: Download Erlang repo RPM
+  get_url:
+    url: https://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm
+    dest: "{{ erlang_rpm_tmp_path }}"
+    owner: root
+    group: root
+    mode: 0644
+    checksum: sha1:51d685c061246bbd24a127f4dd664b81e76ea7af
+
+- name: Install Erlang repo from RPM file
+  yum:
+    name: "{{ erlang_rpm_tmp_path }}"
+    state: present
+
+- name: Remove Erlang repo RPM file
+  file:
+    path: "{{ erlang_rpm_tmp_path }}"
+    state: absent

@@ -1,0 +1,9 @@
+---
+erlang_rpm_tmp_path: '/tmp/erlang-solutions-1.0-1.noarch.rpm'
+erlang_repo_file: '/etc/yum.repos.d/erlang_solutions.repo'
+erlang_version: '21.1'
+rabbitmq_version: '3.7.9'
+rabbitmq_bin_file: '/usr/sbin/rabbitmq-server'
+rabbitmq_rpm_tmp_path: "/tmp/rabbitmq-server-{{ rabbitmq_version }}.rpm"
+rabbitmq_user: guest
+rabbitmq_pass: guest

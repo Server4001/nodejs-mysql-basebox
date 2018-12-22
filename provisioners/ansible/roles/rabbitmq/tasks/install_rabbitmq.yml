@@ -1,0 +1,19 @@
+---
+- name: Download the RabbitMQ RPM
+  get_url:
+    url: "https://dl.bintray.com/rabbitmq/all/rabbitmq-server/{{ rabbitmq_version }}/rabbitmq-server-{{ rabbitmq_version }}-1.el6.noarch.rpm"
+    dest: "{{ rabbitmq_rpm_tmp_path }}"
+    owner: root
+    group: root
+    mode: 0644
+    checksum: sha1:de1ec3fbc7f31ad31138fa7da3620ee8756be8d9
+
+- name: Install RabbitMQ from RPM file
+  yum:
+    name: "{{ rabbitmq_rpm_tmp_path }}"
+    state: present
+
+- name: Remove RabbitMQ RPM file
+  file:
+    path: "{{ rabbitmq_rpm_tmp_path }}"
+    state: absent

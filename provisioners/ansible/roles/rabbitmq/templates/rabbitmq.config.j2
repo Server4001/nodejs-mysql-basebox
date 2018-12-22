@@ -1,0 +1,25 @@
+[
+  {rabbit, [
+    {tcp_listen_options,
+         [binary,
+         {packet,        raw},
+         {reuseaddr,     true},
+         {backlog,       128},
+         {nodelay,       true},
+         {exit_on_close, false}]
+    },
+    {default_user, <<"{{ rabbitmq_user }}">>},
+    {default_pass, <<"{{ rabbitmq_pass }}">>},
+    {loopback_users, []}
+  ]},
+  {kernel, [
+
+  ]}
+,
+  {rabbitmq_management, [
+    {listener, [
+      {port, 15672}
+    ]}
+  ]}
+].
+% EOF

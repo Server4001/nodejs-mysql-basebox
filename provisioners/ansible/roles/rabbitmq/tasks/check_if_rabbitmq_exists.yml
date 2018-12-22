@@ -1,0 +1,5 @@
+---
+- name: Check if RabbitMQ has been installed
+  stat:
+    path: "{{ rabbitmq_bin_file }}"
+  register: rabbitmq_installed

@@ -1,0 +1,5 @@
+---
+- name: Enable the RabbitMQ Management plugin
+  command: '/usr/sbin/rabbitmq-plugins enable rabbitmq_management'
+  args:
+    creates: "/var/lib/rabbitmq/mnesia/rabbit@{{ hostvars['default']['vm_short_hostname'] }}-plugins-expand/rabbitmq_management-{{ rabbitmq_version }}"

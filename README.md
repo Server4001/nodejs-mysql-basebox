@@ -14,6 +14,8 @@
 * Make any changes you need to the box by changing the Ansible provisioner.
 * Before packaging up the box, ssh in, and run the following commands:
 ```bash
+sudo service rabbitmq-server stop
+sudo chkconfig rabbitmq-server off
 sudo yum clean all
 sudo dd if=/dev/zero of=/bigemptyfile bs=1M
 sudo rm -rf /bigemptyfile

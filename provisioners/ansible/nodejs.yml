@@ -18,6 +18,7 @@
   - redis
   - mysql
   - mongodb
+  - rabbitmq
 
   handlers:
   - import_tasks: handlers/handlers.yml

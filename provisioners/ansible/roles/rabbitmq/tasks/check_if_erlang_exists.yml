@@ -1,0 +1,5 @@
+---
+- name: Check if the Erlang repo has already been installed
+  stat:
+    path: "{{ erlang_repo_file }}"
+  register: erlang_repo_installed
