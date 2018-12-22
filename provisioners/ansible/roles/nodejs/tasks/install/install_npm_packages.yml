@@ -1,15 +1,7 @@
 ---
-- name: Download Yarn repo file
-  get_url:
-    url: https://dl.yarnpkg.com/rpm/yarn.repo
-    dest: /etc/yum.repos.d/yarn.repo
-    owner: root
-    group: root
-    mode: 0644
-    checksum: sha1:da91775caef424acafb43eb8fe95005af945fdc4
-
-- name: Install yarn
-  yum:
-    name: yarn
+- name: Install nodemon globally
+  npm:
+    name: nodemon
+    global: yes
     state: present
-
+    version: "{{ nodemon_version }}"

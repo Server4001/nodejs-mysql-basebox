@@ -6,3 +6,5 @@
 - import_tasks: install/install_nodejs.yml
 
 - import_tasks: install/install_npm_packages.yml
+
+- import_tasks: install/yarn.yml
