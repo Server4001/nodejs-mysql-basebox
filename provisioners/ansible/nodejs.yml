@@ -12,6 +12,7 @@
   - curl
   - iptables
   - nodejs
+  - npm
   - nginx
   - supervisord
   - redis

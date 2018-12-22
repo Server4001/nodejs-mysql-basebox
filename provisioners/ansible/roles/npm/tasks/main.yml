@@ -5,3 +5,5 @@
     global: yes
     state: present
     version: "{{ nodemon_version }}"
+
+- import_tasks: yarn.yml
