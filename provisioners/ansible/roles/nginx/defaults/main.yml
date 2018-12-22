@@ -1,4 +1,5 @@
 ---
+nginx_version: '1.14.1'
 nginx_sendfile: "off"
 nginx_worker_processes: 1
 nginx_worker_connections: 1024
