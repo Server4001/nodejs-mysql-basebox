@@ -18,3 +18,8 @@
   service:
     name: supervisord
     state: reloaded
+
+- name: Restart MongoDB
+  service:
+    name: mongod
+    state: restarted

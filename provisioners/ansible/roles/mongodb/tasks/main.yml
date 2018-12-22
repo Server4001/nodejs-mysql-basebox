@@ -1,0 +1,45 @@
+---
+- name: Add the MongoDB yum repo
+  template:
+    src: mongodb.repo.j2
+    dest: /etc/yum.repos.d/mongodb-org-4.0.repo
+    mode: 0644
+    owner: root
+    group: root
+
+- name: Install MongoDB
+  yum:
+    name: "{{ item }}-{{ mongodb_version }}"
+    state: present
+  with_items:
+    - mongodb-org
+    - mongodb-org-server
+    - mongodb-org-shell
+    - mongodb-org-mongos
+    - mongodb-org-tools
+
+- name: Configure MongoDB
+  template:
+    src: mongod.conf.j2
+    dest: /etc/mongod.conf
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+  - Restart MongoDB
+
+- name: Increase the max number of processes for MongoDB
+  template:
+    src: mongodb.limits.conf.j2
+    dest: /etc/security/limits.d/99-mongodb-nproc.conf
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+  - Restart MongoDB
+
+- name: Start MongoDB
+  service:
+    name: mongod
+    state: started
+    enabled: true

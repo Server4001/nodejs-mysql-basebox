@@ -16,6 +16,7 @@
   - supervisord
   - redis
   - mysql
+  - mongodb
 
   handlers:
   - import_tasks: handlers/handlers.yml
