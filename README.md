@@ -12,6 +12,7 @@
 
 * `vagrant up`
 * Make any changes you need to the box by changing the Ansible provisioner.
+* Update the version numbers in this README.
 * Before packaging up the box, ssh in, and run the following commands:
 ```bash
 sudo service rabbitmq-server stop
@@ -33,6 +34,16 @@ cat /dev/null > ~/.bash_history && history -c && exit
 * Commit your changes to git.
 * Create a new git tag: `git tag 0.1.0 && git push origin 0.1.0`.
 
-### TODO
+### Version numbers as of box version 0.1.0.
 
-* Everything.
+* Node.js: 10.14.2
+* CentOS: 6.7
+* Erlang: 21.1
+* MongoDB: 4.0.5
+* MySQL: 5.7.24
+* Nginx: 1.14.1
+* NPM: 6.4.1
+* RabbitMQ: 3.7.9
+* Redis: 3.2.12
+* Supervisord: 3.3.1
+* Yarn: 1.12.3
