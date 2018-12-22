@@ -8,17 +8,17 @@
   any_errors_fatal: true
 
   roles:
-  - common
-  - curl
-  - iptables
-  - nodejs
-  - npm
-  - nginx
-  - supervisord
-  - redis
-  - mysql
-  - mongodb
-  - rabbitmq
+    - common
+    - curl
+    - iptables
+    - nodejs
+    - npm
+    - nginx
+    - supervisord
+    - redis
+    - mysql
+    - mongodb
+    - rabbitmq
 
   handlers:
-  - import_tasks: handlers/handlers.yml
+    - import_tasks: handlers/handlers.yml
